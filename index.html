@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="plants" data-font="sans" data-surface="solid">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Planner &amp; Progress Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+</head>
+<body>
+
+  <!-- Decorative Botanical & Theme Corner Vines -->
+  <svg class="botanical-corner botanical-corner-tl" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M0 0 Q60 35 115 95 Q145 125 170 175" stroke="var(--accent-secondary)" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+    <path d="M0 30 Q50 55 85 115" stroke="var(--accent-secondary)" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+    <ellipse cx="52" cy="30" rx="18" ry="9" transform="rotate(28 52 30)" fill="var(--accent-primary)" opacity="0.55"/>
+    <ellipse cx="88" cy="64" rx="20" ry="9.5" transform="rotate(35 88 64)" fill="var(--accent-primary)" opacity="0.5"/>
+    <ellipse cx="38" cy="72" rx="16" ry="8" transform="rotate(-22 38 72)" fill="var(--accent-primary)" opacity="0.48"/>
+    <ellipse cx="126" cy="108" rx="17" ry="8.5" transform="rotate(40 126 108)" fill="var(--accent-primary)" opacity="0.45"/>
+    <circle cx="72" cy="48" r="6" fill="var(--accent-tertiary)" opacity="0.75"/>
+    <circle cx="110" cy="88" r="5" fill="var(--accent-tertiary)" opacity="0.7"/>
+    <circle cx="48" cy="95" r="4.5" fill="var(--accent-amber)" opacity="0.65"/>
+  </svg>
+
+  <svg class="botanical-corner botanical-corner-br" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M200 200 Q140 165 85 105 Q55 75 30 25" stroke="var(--accent-secondary)" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+    <ellipse cx="148" cy="170" rx="18" ry="9" transform="rotate(28 148 170)" fill="var(--accent-primary)" opacity="0.55"/>
+    <ellipse cx="112" cy="136" rx="20" ry="9.5" transform="rotate(35 112 136)" fill="var(--accent-primary)" opacity="0.5"/>
+    <ellipse cx="162" cy="128" rx="16" ry="8" transform="rotate(-22 162 128)" fill="var(--accent-primary)" opacity="0.48"/>
+    <circle cx="128" cy="152" r="6" fill="var(--accent-tertiary)" opacity="0.75"/>
+    <circle cx="90" cy="112" r="5" fill="var(--accent-tertiary)" opacity="0.7"/>
+  </svg>
+
+  <!-- ========================================================================
+       1. DEDICATED AUTHENTICATION SCREEN (Starts 100% Blank — 0 Pre-Added Users)
+       ======================================================================== -->
+  <section class="auth-screen" id="auth-screen">
+    <div class="auth-container">
+      <!-- Left Info & Aesthetic Overview -->
+      <div class="auth-hero-card">
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+            <div class="auth-brand-badge" style="margin-bottom:0;">
+              <span id="auth-theme-icon">🌴</span>
+              <span id="auth-theme-badge-text">Lush Jungle Study Planner &amp; Tracker</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-auth-themes" type="button" title="Customize Theme &amp; Look">
+              🎨 11 Themes &amp; Props
+            </button>
+          </div>
+          <h1 class="auth-hero-title">Plan Calmly. Focus Deeply. Grow Your Flowering Tree.</h1>
+          <p class="auth-hero-sub">
+            A clean, real-time academic workspace with 11 immersive theme worlds. Starts 100% blank for a fresh installation — register your university ID to begin.
+          </p>
+
+          <div class="auth-feature-list">
+            <div class="auth-feature-item">
+              <span class="auth-feature-icon">🌸</span>
+              <div>
+                <strong style="color:var(--text-primary);">Real-Time Flowering Tree &amp; Streak Shields</strong><br/>
+                Set your exam horizon (1 week, 1 month, or 4 months). Every streak day and active study minute grows your brown-trunk botanical tree in real time!
+              </div>
+            </div>
+            <div class="auth-feature-item">
+              <span class="auth-feature-icon">⏱️</span>
+              <div>
+                <strong style="color:var(--text-primary);">Real-Time Pomodoro &amp; Smart Stopwatch Coach</strong><br/>
+                Focus periods lock out premature breaks. Both timers update your live study hours, analytics, and tree progress every second.
+              </div>
+            </div>
+            <div class="auth-feature-item">
+              <span class="auth-feature-icon">🏴‍☠️</span>
+              <div>
+                <strong style="color:var(--text-primary);">11 Immersive Theme Worlds with Custom Props</strong><br/>
+                Switch between Dark Lush Jungle, One Piece (9 Straw Hat Crew Faces &amp; Jolly Roger), Cyberpunk City Skyline, Giant Solar System Planets, Shining Night Sky, Anime Torii Gate, and more!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border-subtle);padding-top:14px;">
+          <span id="backend-status-pill">🟢 SQLite Backend Ready (Blank State)</span>
+          <span>Real-Time Engine Active</span>
+        </div>
+      </div>
+
+      <!-- Right Auth Card: Register (Step 1) & Log In (Step 2) -->
+      <div class="auth-card" id="auth-card-box">
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" id="auth-tab-register" type="button">1. Register Account</button>
+          <button class="auth-tab-btn" id="auth-tab-login" type="button">2. Log In</button>
+        </div>
+
+        <div class="auth-status-msg" id="auth-status-msg"></div>
+
+        <!-- STEP 1: REGISTER FORM -->
+        <form id="auth-form-register" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name</label>
+            <input class="input-field" id="reg-name" type="text" placeholder="e.g., Hani Ali" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-student-id">University Student ID</label>
+            <input class="input-field" id="reg-student-id" type="text" placeholder="e.g., F25CSC038" required />
+            <span class="format-hint-pill">Example ID: F25CSC038</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">University Email</label>
+            <input class="input-field" id="reg-email" type="text" placeholder="F25CSC038.shu.edu.pk" required />
+            <span class="format-hint-pill">Required Format: ID.shu.edu.pk (e.g., F25CSC038.shu.edu.pk)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Create Password</label>
+            <input class="input-field" id="reg-password" type="password" placeholder="At least 4 characters" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:6px;">
+            Create Student Account →
+          </button>
+        </form>
+
+        <!-- STEP 2: LOG IN FORM (Requires ID + Password) -->
+        <form id="auth-form-login" autocomplete="off" style="display:none;">
+          <div class="form-group">
+            <label class="form-label" for="login-student-id">Student ID</label>
+            <input class="input-field" id="login-student-id" type="text" placeholder="F25CSC038" required />
+            <span class="format-hint-pill">Log in with your Student ID (e.g., F25CSC038)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input class="input-field" id="login-password" type="password" placeholder="Enter your password" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:6px;">
+            Log In to Study Planner →
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       2. MAIN APPLICATION WORKSPACE (Shown Only After Logging In)
+       ======================================================================== -->
+  <div class="app-workspace" id="app-workspace">
+
+    <!-- Clean Top Navigation Bar -->
+    <header class="top-navbar">
+      <div class="navbar-inner">
+        <div class="brand-cluster">
+          <div class="brand-logo" id="nav-brand-logo" aria-hidden="true">🌴</div>
+          <div>
+            <div class="brand-name" id="nav-brand-title">Verdant Jungle</div>
+            <div class="brand-meta">
+              <span class="live-dot"></span>
+              <span id="live-clock-label">Live Sync</span>
+              <span>•</span>
+              <span id="active-theme-prop-label" style="color:var(--accent-primary);font-weight:600;">Jungle Canopy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Streamlined 5-Tab Navigation -->
+        <nav class="page-tabs" aria-label="Workspace Pages">
+          <button class="page-tab-btn active" data-page="checklist" id="nav-tab-checklist">
+            <span id="tab-icon-checklist">✅</span><span>Checklist</span>
+          </button>
+          <button class="page-tab-btn" data-page="focus" id="nav-tab-focus">
+            <span id="tab-icon-focus">⏱️</span><span>Focus &amp; Stopwatch</span>
+          </button>
+          <button class="page-tab-btn" data-page="plant" id="nav-tab-plant">
+            <span id="tab-icon-plant">🌸</span><span>Growth Tree</span>
+          </button>
+          <button class="page-tab-btn" data-page="schedule" id="nav-tab-schedule">
+            <span id="tab-icon-schedule">📅</span><span>Schedule</span>
+          </button>
+          <button class="page-tab-btn" data-page="analytics" id="nav-tab-analytics">
+            <span id="tab-icon-analytics">📊</span><span>Progress &amp; Subjects</span>
+          </button>
+        </nav>
+
+        <!-- Right Controls: Themes & Look, Guide, Alerts, User & Logout -->
+        <div class="nav-actions">
+          <button class="btn btn-primary btn-sm" id="btn-open-appearance" title="Switch between 11 Themes &amp; Customize Site Look">
+            🎨 11 Themes &amp; Look
+          </button>
+
+          <button class="btn btn-secondary btn-sm" id="btn-toggle-guide" title="Open Step-by-Step Interactive Guide">
+            ✨ Guide
+          </button>
+
+          <button class="btn btn-secondary btn-sm" id="btn-open-notifications" style="position:relative;" title="Real-Time Deadline Alerts">
+            🔔 <span id="notif-count-badge" style="font-family:var(--font-mono);font-weight:700;">0</span>
+          </button>
+
+          <div class="user-chip">
+            <span class="user-id-badge" id="nav-student-id">ID</span>
+            <span id="nav-student-name" style="color:var(--text-secondary);">Student</span>
+          </div>
+
+          <button class="btn btn-danger btn-sm" id="btn-logout" title="Log Out">
+            Log Out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+      <!-- ====================================================================
+           PAGE 1: DAILY CHECKLIST & QUOTA BAR (US-03, US-04, US-06)
+           ==================================================================== -->
+      <section class="tab-page active" id="page-checklist">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title" id="checklist-greeting">Daily Study Checklist</h1>
+            <p class="page-subtitle">Organize your academic tasks, track live deadlines, and hit your daily study quota.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <div class="exam-countdown-pill" id="exam-countdown-pill" title="Click to view &amp; customize your Flowering Tree">
+              🌱 <span id="exam-countdown-text">30d goal • 0d streak • 🛡️ 1</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-prev-day">◀</button>
+            <input class="input-field" id="checklist-date-picker" type="date" style="width:auto;padding:6px 10px;" />
+            <button class="btn btn-secondary btn-sm" id="btn-today-day">Today</button>
+            <button class="btn btn-secondary btn-sm" id="btn-next-day">▶</button>
+          </div>
+        </div>
+
+        <!-- One-Line Daily Study Intention -->
+        <div class="intention-bar">
+          <span class="intention-label">🍃 Today's Focus Intention:</span>
+          <input
+            class="intention-input"
+            id="daily-intention-input"
+            type="text"
+            placeholder="Type your #1 study goal for today (saves automatically in real time)..."
+          />
+        </div>
+
+        <!-- Daily Quota Loading Bar -->
+        <div class="quota-strip">
+          <div class="quota-top">
+            <div>
+              <strong style="font-size:15px;">Daily Completion Quota</strong>
+              <span id="quota-subtext" style="color:var(--text-secondary);font-size:13px;margin-left:10px;">
+                0 of 5 tasks completed today
+              </span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="badge" id="quota-badge-text" style="font-family:var(--font-mono);font-size:12.5px;">0%</span>
+              <button class="btn btn-secondary btn-sm" id="btn-open-settings">⚙️ Quota &amp; Timer Settings</button>
+            </div>
+          </div>
+          <div class="quota-track">
+            <div class="quota-fill" id="quota-fill"></div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Left: Tasks List & Filters -->
+          <div class="card-panel">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;" id="task-filter-group">
+                <button class="btn btn-primary btn-sm" data-filter="all">All</button>
+                <button class="btn btn-secondary btn-sm" data-filter="pending">Pending</button>
+                <button class="btn btn-secondary btn-sm" data-filter="completed">Completed</button>
+                <button class="btn btn-secondary btn-sm" data-filter="overdue">Overdue</button>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <input class="input-field" id="task-search-input" type="search" placeholder="Search tasks..." style="width:165px;padding:6px 10px;font-size:12.5px;" />
+                <select class="select-field" id="task-sort-select" style="width:140px;padding:6px 10px;font-size:12.5px;">
+                  <option value="priority">Sort: Priority</option>
+                  <option value="deadline">Sort: Deadline</option>
+                  <option value="created">Sort: Newest</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="task-list" id="checklist-task-list"></div>
+          </div>
+
+          <!-- Right: Create New Task Form (with Inline + Quick Subject Creation!) -->
+          <div class="card-panel" id="task-creator-card">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:4px;">Add Academic Task</h2>
+            <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:14px;">
+              Assign a subject, priority, and deadline for real-time tracking.
+            </p>
+
+            <form id="form-add-task" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="task-title-input">Task Title</label>
+                <input class="input-field" id="task-title-input" type="text" placeholder="e.g., Complete Chapter 4 Lab Report" required />
+              </div>
+
+              <div class="form-group">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                  <label class="form-label" for="task-subject-select" style="margin:0;">Academic Subject</label>
+                  <button class="btn btn-secondary btn-sm" id="btn-toggle-inline-subject" type="button" style="padding:3px 9px;font-size:11.5px;">
+                    + New Subject
+                  </button>
+                </div>
+                <select class="select-field" id="task-subject-select" required style="margin-top:5px;">
+                  <option value="">Create a subject first...</option>
+                </select>
+
+                <!-- Inline Quick Subject Creator (No tab switching needed!) -->
+                <div class="inline-subject-drawer" id="inline-subject-drawer">
+                  <input class="input-field" id="inline-subj-name" type="text" placeholder="Subject name (e.g. Data Structures)" style="flex:1;min-width:140px;padding:7px 10px;font-size:12.5px;" />
+                  <input class="input-field" id="inline-subj-code" type="text" placeholder="Code (CSC201)" style="width:95px;padding:7px 9px;font-size:12.5px;" />
+                  <input id="inline-subj-color" type="color" value="#52B788" style="width:34px;height:32px;border:none;background:none;cursor:pointer;" title="Subject Color" />
+                  <button class="btn btn-primary btn-sm" id="btn-save-inline-subject" type="button">Add</button>
+                </div>
+              </div>
+
+              <div class="grid-equal" style="gap:10px;">
+                <div class="form-group">
+                  <label class="form-label" for="task-category-select">Category</label>
+                  <select class="select-field" id="task-category-select">
+                    <option value="Assignment">Assignment</option>
+                    <option value="Exam Prep">Exam Prep</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Lab / Project">Lab / Project</option>
+                    <option value="Revision">Revision</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="task-priority-select">Priority</label>
+                  <select class="select-field" id="task-priority-select">
+                    <option value="high">High Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-equal" style="gap:10px;">
+                <div class="form-group">
+                  <label class="form-label" for="task-deadline-input">Due Date &amp; Time</label>
+                  <input class="input-field" id="task-deadline-input" type="datetime-local" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="task-est-input">Est. Minutes</label>
+                  <input class="input-field" id="task-est-input" type="number" min="5" max="480" value="45" />
+                </div>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="width:100%;margin-top:6px;">
+                + Add Task to Checklist
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PAGE 2: STRICT POMODORO & SMART STOPWATCH WITH BREAK COACH
+           ==================================================================== -->
+      <section class="tab-page" id="page-focus">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Focus Studio &amp; Smart Study Stopwatch</h1>
+            <p class="page-subtitle">
+              Strict Pomodoro locks out premature breaks during focus runs. Every active second updates your study stats &amp; Growth Tree in real time!
+            </p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <select class="select-field" id="focus-subject-select" style="width:220px;">
+              <option value="">General Study Session</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" id="btn-toggle-zen" type="button" title="Hide top navigation and distractions while focusing">
+              🧘 Zen Focus Mode: Off
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-equal">
+          <!-- Left: Strict Pomodoro Timer -->
+          <div class="card-panel">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+              <div>
+                <h2 style="font-family:var(--font-serif);font-size:19px;">Strict Pomodoro Timer</h2>
+                <p style="font-size:12.5px;color:var(--text-secondary);">Breaks are locked while a Focus period is actively running.</p>
+              </div>
+              <span class="badge" id="pomo-phase-badge">Focus Mode</span>
+            </div>
+
+            <!-- Mode Selector Buttons -->
+            <div style="display:flex;gap:8px;justify-content:center;margin:10px 0;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="btn-pomo-mode-focus" type="button">Focus (25m)</button>
+              <button class="btn btn-secondary btn-sm" id="btn-pomo-mode-short" type="button">Short Break (5m)</button>
+              <button class="btn btn-secondary btn-sm" id="btn-pomo-mode-long" type="button">Long Break (15m)</button>
+            </div>
+
+            <!-- Quick Real-Time Duration Presets (So you can test or customize immediately!) -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:8px;flex-wrap:wrap;">
+              <span style="font-size:11.5px;color:var(--text-muted);">Quick Set Focus:</span>
+              <button class="btn btn-secondary btn-sm" type="button" data-quick-pomo="0.1667" style="padding:3px 8px;font-size:11px;" title="10-second test run to preview completion choices!">⚡ 10s Demo</button>
+              <button class="btn btn-secondary btn-sm" type="button" data-quick-pomo="1" style="padding:3px 8px;font-size:11px;">1m</button>
+              <button class="btn btn-secondary btn-sm" type="button" data-quick-pomo="15" style="padding:3px 8px;font-size:11px;">15m</button>
+              <button class="btn btn-secondary btn-sm" type="button" data-quick-pomo="25" style="padding:3px 8px;font-size:11px;">25m</button>
+              <button class="btn btn-secondary btn-sm" type="button" data-quick-pomo="45" style="padding:3px 8px;font-size:11px;">45m</button>
+            </div>
+
+            <div class="timer-ring-box">
+              <svg class="timer-ring-svg" viewBox="0 0 220 220">
+                <circle class="timer-ring-bg" cx="110" cy="110" r="100"></circle>
+                <circle class="timer-ring-fg" id="pomo-ring-fg" cx="110" cy="110" r="100"></circle>
+              </svg>
+              <div style="text-align:center;z-index:2;">
+                <div class="timer-clock" id="pomo-clock-display">25:00</div>
+                <div class="timer-sub" id="pomo-status-sub">Ready to Focus</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:center;">
+              <button class="btn btn-primary" id="btn-pomo-start" type="button">▶ Start Focus Run</button>
+              <button class="btn btn-secondary" id="btn-pomo-reset" type="button">↺ Reset</button>
+            </div>
+
+            <!-- Strict Focus Lock Notice -->
+            <div class="pomo-lock-banner" id="pomo-lock-banner">
+              🔒 Focus run is active — Short &amp; Long breaks are locked until this focus timer completes!
+            </div>
+
+            <!-- Post-Focus Completion Choice Box -->
+            <div class="pomo-complete-choices" id="pomo-complete-choices">
+              <strong style="color:var(--accent-primary);font-size:14.5px;display:block;margin-bottom:6px;">
+                🎉 Focus Period Complete! What would you like to do next?
+              </strong>
+              <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:12px;">
+                Your focus session has been logged. Choose your next action:
+              </p>
+              <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                <button class="btn btn-primary btn-sm" id="btn-choice-another-focus" type="button">🔥 Do Another Focus Run</button>
+                <button class="btn btn-secondary btn-sm" id="btn-choice-short-break" type="button">☕ Take Short Break</button>
+                <button class="btn btn-secondary btn-sm" id="btn-choice-long-break" type="button">🌿 Take Long Break</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Smart Study Stopwatch & Real-Time Break Coach -->
+          <div class="card-panel">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+              <div>
+                <h2 style="font-family:var(--font-serif);font-size:19px;">Smart Study Stopwatch &amp; Coach</h2>
+                <p style="font-size:12.5px;color:var(--text-secondary);">
+                  Counts your study session upward. Pressing a break stops the study timer, tracks break duration, and advises your pacing.
+                </p>
+              </div>
+              <span class="badge" id="sw-mode-badge">Idle</span>
+            </div>
+
+            <div class="timer-ring-box" style="height:200px;width:200px;">
+              <div style="text-align:center;">
+                <div class="timer-clock" id="sw-active-clock" style="font-size:36px;">00:00:00</div>
+                <div class="timer-sub" id="sw-active-label">Study Stopwatch</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+              <button class="btn btn-primary" id="btn-sw-study" type="button">▶ Start / Resume Studying</button>
+              <button class="btn btn-secondary" id="btn-sw-short-break" type="button" disabled>☕ Take Short Break</button>
+              <button class="btn btn-secondary" id="btn-sw-long-break" type="button" disabled>🌿 Take Long Break</button>
+              <button class="btn btn-danger btn-sm" id="btn-sw-finish" type="button" disabled>⏹ Save &amp; Reset Session</button>
+            </div>
+
+            <!-- Live Tracked Session Breakdown -->
+            <div class="grid-equal" style="gap:10px;">
+              <div style="background:var(--bg-card);padding:11px 14px;border-radius:10px;border:1px solid var(--border-subtle);">
+                <div style="font-size:11.5px;color:var(--text-muted);">Total Study Time (Live)</div>
+                <div id="sw-total-study" style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--accent-primary);">00:00:00</div>
+              </div>
+              <div style="background:var(--bg-card);padding:11px 14px;border-radius:10px;border:1px solid var(--border-subtle);">
+                <div style="font-size:11.5px;color:var(--text-muted);">Total Break Time (<span id="sw-break-count">0</span> breaks)</div>
+                <div id="sw-total-break" style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--accent-amber);">00:00:00</div>
+              </div>
+            </div>
+
+            <!-- Intelligent Pacing Coach Advice -->
+            <div class="coach-advice-box" id="sw-coach-advice">
+              <strong style="color:var(--text-primary);display:block;margin-bottom:3px;">🧠 Smart Break Coach</strong>
+              <span id="sw-coach-text">
+                Start the study stopwatch when you begin working. Whenever you press Short or Long Break, I will pause your study timer, time your break, and give you real-time feedback on your study-to-break balance.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PAGE 3: GOAL-SCALED BOTANICAL FLOWERING TREE (REAL-TIME)
+           ==================================================================== -->
+      <section class="tab-page" id="page-plant">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Flowering Tree Growth Tracker (Real-Time)</h1>
+            <p class="page-subtitle">
+              Your brown-trunk woodland tree grows in real time as your daily streak, tasks, and focus minutes increase toward your exam horizon.
+            </p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="badge" id="plant-shield-badge" style="font-size:12.5px;padding:6px 12px;">
+              🛡️ 1 Streak Shield Ready (Earn +1 every 7 streak days)
+            </span>
+            <span class="badge" id="plant-streak-pill" style="font-size:13px;padding:6px 12px;color:var(--accent-primary);">
+              🔥 0 Day Streak
+            </span>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Left: Dynamic SVG Flowering Tree Canvas -->
+          <div class="card-panel">
+            <div class="tree-stage-canvas" id="plant-canvas-box">
+              <div id="plant-svg-stage" style="width:320px;height:290px;display:flex;align-items:center;justify-content:center;"></div>
+              <div style="text-align:center;margin-top:2px;width:90%;">
+                <div id="plant-stage-title" style="font-family:var(--font-serif);font-size:20px;font-weight:700;">Stage 1: Dormant Seed</div>
+                <div id="plant-stage-desc" style="font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;">
+                  Day 0 of 30 (0% to Full Flowering Tree)
+                </div>
+                <div class="quota-track" style="height:10px;">
+                  <div class="quota-fill" id="plant-live-progress-bar" style="width:0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7 Stage Milestones -->
+            <div class="tree-stage-pills" id="plant-stage-pills"></div>
+          </div>
+
+          <!-- Right: Real-Time Study Goal Horizon & Interactive Tree Controls -->
+          <div class="card-panel" id="plant-goal-card">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:4px;">Exam Horizon &amp; Real-Time Tree Controls</h2>
+            <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:14px;">
+              All changes below update your tree stages and bloom percentage <strong>instantly in real time</strong>!
+            </p>
+
+            <form id="form-plant-goal" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="plant-goal-title">Goal / Exam Name</label>
+                <input class="input-field" id="plant-goal-title" type="text" placeholder="e.g., Final Semester Exams" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="plant-horizon-preset">Study Horizon Preset</label>
+                <select class="select-field" id="plant-horizon-preset">
+                  <option value="7">1 Week Sprint (7 Streak Days to Full Flowering Tree)</option>
+                  <option value="14">2 Week Midterms (14 Streak Days to Full Flowering Tree)</option>
+                  <option value="30" selected>1 Month Goal (30 Streak Days to Full Flowering Tree)</option>
+                  <option value="60">2 Month Block (60 Streak Days to Full Flowering Tree)</option>
+                  <option value="120">4 Months Final Exam (120 Streak Days to Full Flowering Tree)</option>
+                  <option value="custom">Custom Number of Days...</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="custom-days-group" style="display:none;">
+                <label class="form-label" for="plant-custom-days">Custom Target Days (3 to 365)</label>
+                <input class="input-field" id="plant-custom-days" type="number" min="3" max="365" value="30" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="plant-species-select">Flowering Tree Variety</label>
+                <select class="select-field" id="plant-species-select">
+                  <option value="woodland">Woodland Cedar &amp; Terracotta Blossom (Brown &amp; Lush Green)</option>
+                  <option value="sakura">Cherry Blossom Sakura (Warm Pink &amp; Rose Petals)</option>
+                  <option value="jacaranda">Royal Jacaranda (Lavender &amp; Violet Blossoms)</option>
+                  <option value="golden_oak">Sunlit Golden Tree (Amber &amp; Warm Gold Blossoms)</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="width:100%;">
+                ✓ Confirm Horizon Settings
+              </button>
+            </form>
+
+            <!-- Interactive Real-Time Growth Slider & Controls -->
+            <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border-subtle);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:12.5px;font-weight:700;">Interactive Streak &amp; Growth Preview</span>
+                <span id="plant-slider-label" style="font-family:var(--font-mono);font-size:12px;color:var(--accent-primary);">Day 0 / 30</span>
+              </div>
+              <input
+                type="range"
+                id="plant-streak-slider"
+                min="0"
+                max="30"
+                step="1"
+                value="0"
+                style="width:100%;accent-color:var(--accent-primary);margin-bottom:10px;cursor:pointer;"
+              />
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn btn-secondary btn-sm" id="btn-streak-minus" type="button" style="flex:1;">
+                  -1 Day
+                </button>
+                <button class="btn btn-primary btn-sm" id="btn-simulate-streak" type="button" style="flex:1.5;">
+                  🌱 +1 Streak Day
+                </button>
+                <button class="btn btn-secondary btn-sm" id="btn-streak-full-bloom" type="button" style="flex:1.5;">
+                  🌸 100% Full Bloom
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PAGE 4: WEEKLY SCHEDULE PLANNER (US-05)
+           ==================================================================== -->
+      <section class="tab-page" id="page-schedule">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Weekly Study Timetable</h1>
+            <p class="page-subtitle">Plan structured study blocks across the week and organize your routine by subject.</p>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Left: Weekly Day-by-Day Schedule List -->
+          <div class="card-panel">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;" id="schedule-day-tabs">
+              <button class="btn btn-primary btn-sm" data-day="All">All Days</button>
+              <button class="btn btn-secondary btn-sm" data-day="Monday">Mon</button>
+              <button class="btn btn-secondary btn-sm" data-day="Tuesday">Tue</button>
+              <button class="btn btn-secondary btn-sm" data-day="Wednesday">Wed</button>
+              <button class="btn btn-secondary btn-sm" data-day="Thursday">Thu</button>
+              <button class="btn btn-secondary btn-sm" data-day="Friday">Fri</button>
+              <button class="btn btn-secondary btn-sm" data-day="Saturday">Sat</button>
+              <button class="btn btn-secondary btn-sm" data-day="Sunday">Sun</button>
+            </div>
+            <div id="schedule-blocks-container"></div>
+          </div>
+
+          <!-- Right: Add Study Block -->
+          <div class="card-panel">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:12px;">Add Weekly Study Slot</h2>
+            <form id="form-add-schedule" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="sched-day-select">Day of Week</label>
+                <select class="select-field" id="sched-day-select">
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sched-subject-select">Subject</label>
+                <select class="select-field" id="sched-subject-select" required>
+                  <option value="">Create a subject first...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sched-topic-input">Study Topic / Goal</label>
+                <input class="input-field" id="sched-topic-input" type="text" placeholder="e.g., Lecture Review &amp; Past Papers" required />
+              </div>
+
+              <div class="grid-equal" style="gap:10px;">
+                <div class="form-group">
+                  <label class="form-label" for="sched-start-input">Start Time</label>
+                  <input class="input-field" id="sched-start-input" type="time" value="16:00" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="sched-duration-input">Duration (Minutes)</label>
+                  <input class="input-field" id="sched-duration-input" type="number" min="15" max="300" value="60" required />
+                </div>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="width:100%;">
+                + Add Slot to Weekly Plan
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PAGE 5: PROGRESS, SUBJECTS & PORTABLE BACKUP (US-02, US-08, US-09)
+           ==================================================================== -->
+      <section class="tab-page" id="page-analytics">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Academic Progress, Subjects &amp; Portable Backup</h1>
+            <p class="page-subtitle">Real-time subject mastery, weekly productivity metrics, subject creation, and 1-click JSON backup.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" id="btn-export-backup" type="button">
+              💾 Export Study Backup (.json)
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-import-backup" type="button">
+              📂 Import Backup (.json)
+            </button>
+            <input type="file" id="input-import-backup" accept=".json,application/json" style="display:none;" />
+          </div>
+        </div>
+
+        <!-- Top 4 Summary KPIs -->
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div style="font-size:12px;color:var(--text-muted);">Overall Task Completion</div>
+            <div class="stat-val" id="kpi-completion-rate">0%</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size:12px;color:var(--text-muted);">Completed / Total Tasks</div>
+            <div class="stat-val" id="kpi-tasks-ratio">0 / 0</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size:12px;color:var(--text-muted);">Total Study Time (Live)</div>
+            <div class="stat-val" id="kpi-study-hours">0m</div>
+          </div>
+          <div class="stat-box">
+            <div style="font-size:12px;color:var(--text-muted);">Pending / Overdue Tasks</div>
+            <div class="stat-val" id="kpi-pending-overdue">0 / 0</div>
+          </div>
+        </div>
+
+        <!-- Subject Mastery & 7-Day Study Activity -->
+        <div class="grid-equal" style="margin-bottom:22px;">
+          <div class="card-panel">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:12px;">Subject-Wise Progress (US-08)</h2>
+            <div id="analytics-subject-bars"></div>
+          </div>
+
+          <div class="card-panel">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:12px;">Last 7 Days Productivity (US-09)</h2>
+            <div id="analytics-weekly-bars"></div>
+          </div>
+        </div>
+
+        <!-- Manage Academic Subjects (US-02) -->
+        <div class="grid-2col">
+          <div class="card-panel">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:12px;">Your Academic Subjects (US-02)</h2>
+            <div id="subjects-list-container"></div>
+          </div>
+
+          <div class="card-panel" id="subject-creator-card">
+            <h2 style="font-family:var(--font-serif);font-size:18px;margin-bottom:12px;">Add New Subject</h2>
+            <form id="form-add-subject" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="subj-name-input">Subject Title</label>
+                <input class="input-field" id="subj-name-input" type="text" placeholder="e.g., Data Structures &amp; Algorithms" required />
+              </div>
+
+              <div class="grid-equal" style="gap:10px;">
+                <div class="form-group">
+                  <label class="form-label" for="subj-code-input">Course Code</label>
+                  <input class="input-field" id="subj-code-input" type="text" placeholder="e.g., CSC-201" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="subj-target-input">Weekly Target Hours</label>
+                  <input class="input-field" id="subj-target-input" type="number" min="1" max="40" value="6" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subj-instructor-input">Instructor / Notes (Optional)</label>
+                <input class="input-field" id="subj-instructor-input" type="text" placeholder="e.g., Dr. Ahmed" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subj-color-input">Subject Accent Color</label>
+                <input class="input-field" id="subj-color-input" type="color" value="#52B788" style="height:40px;padding:4px;" />
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="width:100%;">
+                + Create Academic Subject
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================
+       3. COMPACT FLOATING LOFI MUSIC DOCK (6 Curated Tracks + Equalizer)
+       ======================================================================== -->
+  <div class="music-dock" aria-label="Ambient Lofi Music Player">
+    <div class="eq-bars" id="lofi-eq-bars" aria-hidden="true">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+    <button class="music-ctrl-btn" id="btn-lofi-prev" type="button" title="Previous Track">⏮</button>
+    <button class="music-ctrl-btn play-main" id="btn-lofi-play" type="button" title="Play / Pause Lofi Music">▶</button>
+    <button class="music-ctrl-btn" id="btn-lofi-next" type="button" title="Next Track">⏭</button>
+
+    <select class="music-track-select" id="lofi-track-select" aria-label="Choose Lofi Track">
+      <option value="0">1. Midnight Botanical Study (Lofi Rhodes)</option>
+      <option value="1">2. Rainy Greenhouse Rhodes (Chillhop + Rain)</option>
+      <option value="2">3. Sakura Rooftop Breeze (Warm Jazz Lofi)</option>
+      <option value="3">4. Starlight Library Beats (Dreamy Synth)</option>
+      <option value="4">5. Espresso &amp; Paperbacks (Acoustic Vinyl)</option>
+      <option value="5">6. Dawn Before Finals (Uplifting Chillhop)</option>
+    </select>
+
+    <input id="lofi-volume-slider" type="range" min="0" max="1" step="0.05" value="0.5" style="width:75px;accent-color:var(--accent-primary);" title="Music Volume" />
+  </div>
+
+  <!-- ========================================================================
+       4. ACTION-GATED STEP-BY-STEP INTERACTIVE GUIDE HUD
+       ======================================================================== -->
+  <aside class="guide-hud" id="guide-hud" aria-live="polite">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <span class="guide-step-tag" id="guide-step-badge">Step 1 of 6</span>
+      <div style="display:flex;gap:6px;">
+        <button class="btn btn-secondary btn-sm" id="btn-guide-focus-target" type="button" style="padding:3px 8px;font-size:11px;">Show Me</button>
+        <button class="btn btn-secondary btn-sm" id="btn-guide-close" type="button" style="padding:3px 8px;font-size:11px;">Hide</button>
+      </div>
+    </div>
+    <div id="guide-step-title" style="font-family:var(--font-serif);font-size:16px;font-weight:700;margin-bottom:4px;">
+      Step 1: Register Your Student Account
+    </div>
+    <p id="guide-step-body" style="font-size:12.5px;color:var(--text-secondary);">
+      Fill in the Registration form using your university ID format (e.g., F25CSC038 and F25CSC038.shu.edu.pk). Once you register, Step 2 unlocks automatically!
+    </p>
+    <div class="guide-progress-dots" id="guide-progress-dots"></div>
+  </aside>
+
+  <!-- ========================================================================
+       5. APPEARANCE & 11-THEME STUDIO MODAL
+       ======================================================================== -->
+  <div class="modal-backdrop" id="modal-appearance">
+    <div class="modal-card wide">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <div>
+          <h3 style="font-family:var(--font-serif);font-size:21px;">🎨 Appearance &amp; 11-Theme Worlds Studio</h3>
+          <p style="font-size:12.5px;color:var(--text-secondary);">
+            Each theme transforms the entire background scenery, icons, and floating props (Straw Hat Crew Faces, Cyberpunk Skyline, Giant Solar System, Lush Dark Jungle, etc.).
+          </p>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-close-appearance" type="button">✕ Done</button>
+      </div>
+
+      <!-- 11 Theme Cards Grid -->
+      <div style="font-size:12.5px;font-weight:700;color:var(--text-secondary);margin-bottom:6px;">
+        Select Theme World, Scenic Backdrop &amp; Floating Props (11 Options)
+      </div>
+      <div class="theme-grid" id="theme-studio-grid"></div>
+
+      <!-- Look & Feel Customizations -->
+      <div class="grid-equal" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border-subtle);gap:16px;">
+        <div>
+          <div class="form-label" style="margin-bottom:6px;">Typography Style</div>
+          <div class="segmented-group" id="font-style-group">
+            <button class="seg-btn active" type="button" data-font="sans">Clean Sans</button>
+            <button class="seg-btn" type="button" data-font="serif">Editorial Serif</button>
+            <button class="seg-btn" type="button" data-font="rounded">Cozy Rounded</button>
+            <button class="seg-btn" type="button" data-font="mono">Tech Mono</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-label" style="margin-bottom:6px;">Card Corner Shape</div>
+          <div class="segmented-group" id="radius-style-group">
+            <button class="seg-btn" type="button" data-radius="8px">Sharp (8px)</button>
+            <button class="seg-btn active" type="button" data-radius="16px">Balanced (16px)</button>
+            <button class="seg-btn" type="button" data-radius="24px">Soft Pill (24px)</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-label" style="margin-bottom:6px;">Card Surface Style</div>
+          <div class="segmented-group" id="surface-style-group">
+            <button class="seg-btn active" type="button" data-surface="solid">Solid Cards</button>
+            <button class="seg-btn" type="button" data-surface="glass">Frosted Glass</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-label" style="margin-bottom:6px;">Floating Theme Props</div>
+          <div class="segmented-group" id="particles-style-group">
+            <button class="seg-btn active" type="button" data-particles="on">✨ Props &amp; Effects On</button>
+            <button class="seg-btn" type="button" data-particles="off">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       6. NOTIFICATIONS & SETTINGS MODALS + TOAST STACK
+       ======================================================================== -->
+  <div class="modal-backdrop" id="modal-notifications">
+    <div class="modal-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <h3 style="font-family:var(--font-serif);font-size:19px;">Real-Time Deadline Alerts (US-07)</h3>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-secondary btn-sm" id="btn-clear-notifications" type="button">Clear All</button>
+          <button class="btn btn-secondary btn-sm" id="btn-close-notifications" type="button">✕</button>
+        </div>
+      </div>
+      <div id="notifications-list-box" style="display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-settings">
+    <div class="modal-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <h3 style="font-family:var(--font-serif);font-size:19px;">Planner &amp; Timer Settings</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-settings" type="button">✕</button>
+      </div>
+      <form id="form-settings">
+        <div class="form-group">
+          <label class="form-label" for="set-daily-quota">Daily Task Quota Goal (Tasks/Day)</label>
+          <input class="input-field" id="set-daily-quota" type="number" min="1" max="25" value="5" />
+        </div>
+        <div class="grid-equal" style="gap:10px;">
+          <div class="form-group">
+            <label class="form-label" for="set-pomo-focus">Pomodoro Focus (Minutes)</label>
+            <input class="input-field" id="set-pomo-focus" type="number" min="1" max="90" value="25" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="set-pomo-short">Short Break (Minutes)</label>
+            <input class="input-field" id="set-pomo-short" type="number" min="1" max="30" value="5" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="set-pomo-long">Long Break (Minutes)</label>
+          <input class="input-field" id="set-pomo-long" type="number" min="1" max="60" value="15" />
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%;">Save Settings</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toast-stack"></div>
+
+  <!-- Scripts -->
+  <script src="js/store.js?v=4"></script>
+  <script src="js/audio.js?v=4"></script>
+  <script src="js/confetti.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
+</body>
+</html>

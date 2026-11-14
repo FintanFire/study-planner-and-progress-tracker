@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" width="1100" height="600" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1100" height="600" fill="#0B1021"/>
+  <text x="550" y="42" text-anchor="middle" fill="#F8FAFC" font-size="24" font-weight="bold">Entity-Relationship (ER) &amp; Data Schema Diagram</text>
+  <text x="550" y="66" text-anchor="middle" fill="#93C5FD" font-size="14">SQLite3 Relational Tables (users, sessions) &amp; User-Scoped Academic Entities</text>
+
+  <!-- USERS Table -->
+  <rect x="50" y="100" width="280" height="210" rx="12" fill="#17213E" stroke="#F5C542" stroke-width="2"/>
+  <rect x="50" y="100" width="280" height="40" rx="12" fill="#F5C542"/>
+  <text x="190" y="126" text-anchor="middle" fill="#0B1021" font-size="15" font-weight="bold">USERS (SQLite Table)</text>
+  <text x="70" y="165" fill="#FDE047" font-size="13" font-weight="bold">PK  student_id : TEXT (e.g. F25CSC038)</text>
+  <text x="70" y="190" fill="#E2E8F0" font-size="13">    name : TEXT NOT NULL</text>
+  <text x="70" y="215" fill="#E2E8F0" font-size="13">UQ  email : TEXT (ID.shu.edu.pk)</text>
+  <text x="70" y="240" fill="#E2E8F0" font-size="13">    password_hash : TEXT (SHA-256)</text>
+  <text x="70" y="265" fill="#E2E8F0" font-size="13">    salt : TEXT</text>
+  <text x="70" y="290" fill="#93C5FD" font-size="13">    planner_state : JSON TEXT</text>
+
+  <!-- SESSIONS Table -->
+  <rect x="50" y="360" width="280" height="150" rx="12" fill="#17213E" stroke="#60A5FA" stroke-width="2"/>
+  <rect x="50" y="360" width="280" height="40" rx="12" fill="#60A5FA"/>
+  <text x="190" y="386" text-anchor="middle" fill="#0B1021" font-size="15" font-weight="bold">SESSIONS (SQLite Table)</text>
+  <text x="70" y="428" fill="#93C5FD" font-size="13" font-weight="bold">PK  token : TEXT (Bearer Token)</text>
+  <text x="70" y="456" fill="#FDE047" font-size="13">FK  student_id : TEXT -&gt; USERS</text>
+  <text x="70" y="484" fill="#E2E8F0" font-size="13">    created_at : ISO-8601 TEXT</text>
+
+  <!-- SUBJECTS Entity -->
+  <rect x="420" y="100" width="290" height="165" rx="12" fill="#17213E" stroke="#34D399" stroke-width="2"/>
+  <rect x="420" y="100" width="290" height="36" rx="12" fill="#34D399"/>
+  <text x="565" y="124" text-anchor="middle" fill="#0B1021" font-size="14" font-weight="bold">SUBJECT (1 : N per User)</text>
+  <text x="440" y="160" fill="#34D399" font-size="12.5" font-weight="bold">PK  id : STRING (subj_...)</text>
+  <text x="440" y="182" fill="#E2E8F0" font-size="12.5">    code : STRING (e.g. CSC-201)</text>
+  <text x="440" y="204" fill="#E2E8F0" font-size="12.5">    name : STRING</text>
+  <text x="440" y="226" fill="#E2E8F0" font-size="12.5">    targetHours : INTEGER</text>
+  <text x="440" y="248" fill="#E2E8F0" font-size="12.5">    color : HEX COLOR</text>
+
+  <!-- TASKS Entity -->
+  <rect x="770" y="100" width="290" height="210" rx="12" fill="#17213E" stroke="#F472B6" stroke-width="2"/>
+  <rect x="770" y="100" width="290" height="36" rx="12" fill="#F472B6"/>
+  <text x="915" y="124" text-anchor="middle" fill="#0B1021" font-size="14" font-weight="bold">TASK (1 : N per Subject)</text>
+  <text x="790" y="160" fill="#F472B6" font-size="12.5" font-weight="bold">PK  id : STRING (task_...)</text>
+  <text x="790" y="182" fill="#34D399" font-size="12.5">FK  subjectId : STRING -&gt; SUBJECT</text>
+  <text x="790" y="204" fill="#E2E8F0" font-size="12.5">    title, category, priority</text>
+  <text x="790" y="226" fill="#E2E8F0" font-size="12.5">    deadline : ISO DATETIME</text>
+  <text x="790" y="248" fill="#E2E8F0" font-size="12.5">    scheduledDate : YYYY-MM-DD</text>
+  <text x="790" y="270" fill="#E2E8F0" font-size="12.5">    completed : BOOLEAN</text>
+  <text x="790" y="292" fill="#E2E8F0" font-size="12.5">    estMinutes : INTEGER</text>
+
+  <!-- PLANT & STREAK Entity -->
+  <rect x="420" y="310" width="290" height="200" rx="12" fill="#17213E" stroke="#C084FC" stroke-width="2"/>
+  <rect x="420" y="310" width="290" height="36" rx="12" fill="#C084FC"/>
+  <text x="565" y="334" text-anchor="middle" fill="#0B1021" font-size="14" font-weight="bold">FLOWERING_TREE &amp; SETTINGS</text>
+  <text x="440" y="370" fill="#E2E8F0" font-size="12.5">    goalLabel : STRING</text>
+  <text x="440" y="392" fill="#E2E8F0" font-size="12.5">    targetDays : INT (7 / 14 / 30 / 120)</text>
+  <text x="440" y="414" fill="#E2E8F0" font-size="12.5">    currentStreak : INT (Days)</text>
+  <text x="440" y="436" fill="#E2E8F0" font-size="12.5">    streakShields : INT</text>
+  <text x="440" y="458" fill="#E2E8F0" font-size="12.5">    treeSpecies : woodland | sakura...</text>
+  <text x="440" y="480" fill="#FDE047" font-size="12.5">    theme : 11 Theme Worlds</text>
+
+  <!-- SCHEDULE & STUDY LOGS Entity -->
+  <rect x="770" y="340" width="290" height="170" rx="12" fill="#17213E" stroke="#FBBF24" stroke-width="2"/>
+  <rect x="770" y="340" width="290" height="36" rx="12" fill="#FBBF24"/>
+  <text x="915" y="364" text-anchor="middle" fill="#0B1021" font-size="14" font-weight="bold">SCHEDULE_BLOCKS &amp; STUDY_LOGS</text>
+  <text x="790" y="400" fill="#E2E8F0" font-size="12.5">    scheduleBlocks[] : day, startTime,</text>
+  <text x="790" y="420" fill="#E2E8F0" font-size="12.5">      duration, topic, subjectId</text>
+  <text x="790" y="450" fill="#E2E8F0" font-size="12.5">    studyLogs[] : date, minutes,</text>
+  <text x="790" y="470" fill="#E2E8F0" font-size="12.5">      subjectId, source (pomo/sw)</text>
+  <text x="790" y="495" fill="#E2E8F0" font-size="12.5">    notifications[] : type, message</text>
+
+  <!-- Relationship Lines -->
+  <line x1="190" y1="310" x2="190" y2="360" stroke="#60A5FA" stroke-width="2.5"/>
+  <line x1="330" y1="200" x2="420" y2="180" stroke="#34D399" stroke-width="2.5"/>
+  <line x1="330" y1="260" x2="420" y2="390" stroke="#C084FC" stroke-width="2.5"/>
+  <line x1="710" y1="180" x2="770" y2="180" stroke="#F472B6" stroke-width="2.5"/>
+</svg>

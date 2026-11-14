@@ -1,0 +1,35 @@
+# ==========================================================================
+# Study Planner & Progress Tracker — Git Ignore Configuration
+# Ensures no local database files, user sessions, passwords, API keys,
+# access tokens, or OS temporary files are ever committed to GitHub.
+# ==========================================================================
+
+# Local runtime database & user state snapshots (keeps repository in 100% blank state)
+data/
+*.db
+*.sqlite
+*.sqlite3
+users_snapshot.json
+*.zip
+
+# Environment variables, secrets, and credentials
+.env
+.env.*
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Python bytecode & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# OS & Editor metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1100" height="620" fill="#0E1F16"/>
+  <text x="550" y="42" text-anchor="middle" fill="#ECF3E8" font-size="24" font-weight="bold">Botanical Study Planner &amp; Progress Tracker — System Architecture</text>
+  <text x="550" y="68" text-anchor="middle" fill="#95D5B2" font-size="14">Three-Tier Client-Server Architecture with Dual Persistence (SQLite3 + Automatic Local Fallback)</text>
+
+  <!-- Tier 1: Presentation & UI Layer -->
+  <rect x="40" y="95" width="310" height="480" rx="16" fill="#16291F" stroke="#52B788" stroke-width="2"/>
+  <text x="195" y="128" text-anchor="middle" fill="#52B788" font-size="17" font-weight="bold">1. Presentation Layer (Frontend)</text>
+  <text x="195" y="148" text-anchor="middle" fill="#B7D3C2" font-size="12">index.html + css/styles.css</text>
+
+  <rect x="65" y="170" width="260" height="65" rx="10" fill="#1D3528" stroke="#40916C"/>
+  <text x="195" y="196" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">5-Tab Responsive Workspace</text>
+  <text x="195" y="216" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Checklist • Focus • Tree • Schedule • Analytics</text>
+
+  <rect x="65" y="250" width="260" height="65" rx="10" fill="#1D3528" stroke="#40916C"/>
+  <text x="195" y="276" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">11-Theme &amp; Appearance Studio</text>
+  <text x="195" y="296" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Scenic SVG Backdrops + Floating Canvas Props</text>
+
+  <rect x="65" y="330" width="260" height="65" rx="10" fill="#1D3528" stroke="#40916C"/>
+  <text x="195" y="356" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Dynamic Flowering Tree SVG</text>
+  <text x="195" y="376" text-anchor="middle" fill="#B7D3C2" font-size="11.5">7 Growth Stages + Streak Shields Engine</text>
+
+  <rect x="65" y="410" width="260" height="65" rx="10" fill="#1D3528" stroke="#40916C"/>
+  <text x="195" y="436" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Web Audio Lofi Synthesizer</text>
+  <text x="195" y="456" text-anchor="middle" fill="#B7D3C2" font-size="11.5">6 Multi-Instrument Tracks + Sound Effects</text>
+
+  <rect x="65" y="490" width="260" height="60" rx="10" fill="#1D3528" stroke="#40916C"/>
+  <text x="195" y="516" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Action-Gated Spotlight Guide</text>
+  <text x="195" y="534" text-anchor="middle" fill="#B7D3C2" font-size="11.5">6-Step Interactive Onboarding HUD</text>
+
+  <!-- Tier 2: Application Logic & State Layer -->
+  <rect x="395" y="95" width="310" height="480" rx="16" fill="#16291F" stroke="#F6BD60" stroke-width="2"/>
+  <text x="550" y="128" text-anchor="middle" fill="#F6BD60" font-size="17" font-weight="bold">2. Application Logic (ES6 JS)</text>
+  <text x="550" y="148" text-anchor="middle" fill="#B7D3C2" font-size="12">js/app.js • js/store.js • js/audio.js • js/confetti.js</text>
+
+  <rect x="420" y="170" width="260" height="75" rx="10" fill="#1D3528" stroke="#C68B59"/>
+  <text x="550" y="198" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">StudyPlannerController</text>
+  <text x="550" y="218" text-anchor="middle" fill="#B7D3C2" font-size="11.5">250ms Wall-Clock Real-Time Heartbeat</text>
+  <text x="550" y="234" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Live Deadlines, Quota &amp; Tree Sync</text>
+
+  <rect x="420" y="260" width="260" height="75" rx="10" fill="#1D3528" stroke="#C68B59"/>
+  <text x="550" y="288" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Strict Pomodoro &amp; Break Coach</text>
+  <text x="550" y="308" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Locks premature breaks during Focus</text>
+  <text x="550" y="324" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Real-time Study-to-Break ratio advice</text>
+
+  <rect x="420" y="350" width="260" height="75" rx="10" fill="#1D3528" stroke="#C68B59"/>
+  <text x="550" y="378" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">AppStore State Manager</text>
+  <text x="550" y="398" text-anchor="middle" fill="#B7D3C2" font-size="11.5">REST Fetch Client + Bearer Auth Token</text>
+  <text x="550" y="414" text-anchor="middle" fill="#B7D3C2" font-size="11.5">100% Blank-State Initialization</text>
+
+  <rect x="420" y="440" width="260" height="110" rx="10" fill="#1D3528" stroke="#C68B59"/>
+  <text x="550" y="468" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Offline Fallback &amp; JSON Backup</text>
+  <text x="550" y="490" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Mirrors state to LocalStorage DB</text>
+  <text x="550" y="508" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Works on http://localhost:8000 AND file://</text>
+  <text x="550" y="526" text-anchor="middle" fill="#52B788" font-size="11.5">1-Click .json Export &amp; Restore</text>
+
+  <!-- Tier 3: Backend & Persistence Layer -->
+  <rect x="750" y="95" width="310" height="480" rx="16" fill="#16291F" stroke="#F28482" stroke-width="2"/>
+  <text x="905" y="128" text-anchor="middle" fill="#F28482" font-size="17" font-weight="bold">3. Backend &amp; Database Layer</text>
+  <text x="905" y="148" text-anchor="middle" fill="#B7D3C2" font-size="12">server.py (Python 3.13 + SQLite3)</text>
+
+  <rect x="775" y="170" width="260" height="90" rx="10" fill="#1D3528" stroke="#F28482"/>
+  <text x="905" y="196" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">RESTful JSON API Endpoints</text>
+  <text x="905" y="216" text-anchor="middle" fill="#B7D3C2" font-size="11.5">POST /api/register • POST /api/login</text>
+  <text x="905" y="234" text-anchor="middle" fill="#B7D3C2" font-size="11.5">GET /api/session • POST /api/sync</text>
+  <text x="905" y="250" text-anchor="middle" fill="#B7D3C2" font-size="11.5">POST /api/logout</text>
+
+  <rect x="775" y="280" width="260" height="80" rx="10" fill="#1D3528" stroke="#F28482"/>
+  <text x="905" y="308" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">Authentication &amp; Security</text>
+  <text x="905" y="328" text-anchor="middle" fill="#B7D3C2" font-size="11.5">ID Format: F25CSC038.shu.edu.pk</text>
+  <text x="905" y="346" text-anchor="middle" fill="#B7D3C2" font-size="11.5">Salted SHA-256 Password Hashing</text>
+
+  <rect x="775" y="380" width="260" height="170" rx="10" fill="#1D3528" stroke="#F28482"/>
+  <text x="905" y="410" text-anchor="middle" fill="#ECF3E8" font-size="14" font-weight="bold">SQLite3 Relational Database</text>
+  <text x="905" y="432" text-anchor="middle" fill="#52B788" font-size="12">data/study_planner.db</text>
+  <text x="905" y="456" text-anchor="middle" fill="#B7D3C2" font-size="11.5">• Table: users (student_id PK, name,</text>
+  <text x="905" y="474" text-anchor="middle" fill="#B7D3C2" font-size="11.5">  email, password_hash, salt, state)</text>
+  <text x="905" y="496" text-anchor="middle" fill="#B7D3C2" font-size="11.5">• Table: sessions (token PK, student_id)</text>
+  <text x="905" y="522" text-anchor="middle" fill="#F6BD60" font-size="11.5">• Auto-Snapshot: users_snapshot.json</text>
+
+  <!-- Connector Arrows -->
+  <line x1="350" y1="320" x2="395" y2="320" stroke="#52B788" stroke-width="3"/>
+  <line x1="705" y1="320" x2="750" y2="320" stroke="#F6BD60" stroke-width="3"/>
+</svg>

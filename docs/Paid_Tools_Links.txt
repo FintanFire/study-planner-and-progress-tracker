@@ -1,0 +1,72 @@
+================================================================================
+PAID TOOLS, PLATFORMS, AND SERVICES DOCUMENTATION (Paid_Tools_Links.txt)
+Project Title: Botanical Study Planner and Progress Tracker
+Course Project Submission Deliverable #4
+================================================================================
+
+1. RUNTIME APPLICATION DEPENDENCIES (100% FREE & OPEN-SOURCE)
+--------------------------------------------------------------------------------
+The Study Planner and Progress Tracker application itself requires ZERO paid
+APIs, ZERO commercial licenses, and ZERO paid cloud subscriptions to install,
+build, or execute. All runtime technologies are 100% free and open-source:
+
+- Python 3 Standard Library (http.server, sqlite3, hashlib, json)
+  Official Link: https://www.python.org/
+  License / Tier: PSF Open Source License (100% Free)
+
+- SQLite3 Embedded Relational Database
+  Official Link: https://www.sqlite.org/
+  License / Tier: Public Domain (100% Free)
+
+- HTML5, CSS3, Vanilla ES6+ JavaScript, Web Audio API & HTML5 Canvas 2D API
+  Official Link: https://developer.mozilla.org/
+  License / Tier: Open Web Standards (100% Free)
+
+- Google Fonts (Plus Jakarta Sans, Fraunces, Quicksand, JetBrains Mono)
+  Official Link: https://fonts.google.com/
+  License / Tier: SIL Open Font License (100% Free)
+
+
+2. DEVELOPMENT, PROJECT MANAGEMENT & AI ASSISTANT PLATFORMS (FREEMIUM / PAID TIERS)
+--------------------------------------------------------------------------------
+Below are the project management, version control, and AI-assisted development
+platforms used during the planning, design, implementation, and documentation
+of this project, including their official links and project-specific URLs:
+
+A. Trello (Atlassian) — Agile Scrum / Kanban Board & User Story Tracking
+   - Service Type: Freemium Cloud Project Management Platform (Free / Standard / Premium Tiers)
+   - Official Website Link: https://trello.com/
+   - Official Pricing / Tier Info: https://trello.com/pricing
+   - Project Board Link: https://trello.com/b/7rFTsg0p/study-planner-and-progress-tracker
+   - How It Was Used: Used to manage the Product Backlog, Sprint Backlog, and
+     Done lists for all 14 Agile User Stories (US-01 through US-14) and their
+     26 acceptance-criteria checklist items.
+
+B. Google Antigravity IDE & Gemini AI Coding Assistant
+   - Service Type: AI-Assisted Software Engineering IDE & Agent Platform (Free / Pro / Paid Tiers)
+   - Official Website Link: https://deepmind.google/technologies/gemini/
+   - Official Platform Link: https://ai.google.dev/
+   - How It Was Used: Used for full-stack code scaffolding, SVG botanical tree
+     and 11-theme vector artwork generation, automated Trello MCP board updates,
+     real-time timer debugging, and SRS documentation formatting.
+
+C. GitHub — Source Code Hosting & Version Control Platform
+   - Service Type: Freemium Git Repository Hosting (Free / Pro / Education Tiers)
+   - Official Website Link: https://github.com/
+   - Official Pricing / Tier Info: https://github.com/pricing
+   - How It Was Used: Used to organize and host the complete source code,
+     Software Requirements Specification (SRS), Tools & Technologies
+     documentation, and system architecture diagrams for instructor evaluation.
+
+D. Pixabay Royalty-Free Audio CDN (Optional Online Lofi Stream Source)
+   - Service Type: Royalty-Free Media Platform (Free Content License with Optional Paid Stock)
+   - Official Website Link: https://pixabay.com/music/
+   - License Link: https://pixabay.com/service/license-summary/
+   - How It Was Used: Provides optional ambient Lofi MP3 streams in js/audio.js,
+     backed by our built-in 100% offline Web Audio API procedural Lofi synthesizer.
+
+================================================================================
+SECURITY & CREDENTIAL NOTICE:
+No passwords, private API keys, secret tokens, or confidential credentials are
+stored or required anywhere in this repository.
+================================================================================
